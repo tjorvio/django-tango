@@ -1,3 +1,9 @@
-{% for category in categories %}
-    <p>{{ category.name }}</p>
-{% endfor %}
+<div>
+    <ul class="nav justify-content-center">
+        {% for category in categories %}
+            <li class="nav-item">
+                <a class="nav-link" href="#"><strong>{{ category.name }}</strong></a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

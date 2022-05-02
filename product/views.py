@@ -1,5 +1,7 @@
 from django.shortcuts import render
 #from django.http import HttpResponse
+
+from product.models import Category
 products = [
     {'name': 'Smart Tv',
      'price': 20.0,
@@ -12,19 +14,20 @@ products = [
      'category': 'Fashion'
      }
 ]
-categories = [
-    {'id': 1, 'name': 'Art'},
-    {'id': 2, 'name': 'Electronics'},
-    {'id': 3, 'name': 'Entertainment'},
-    {'id': 4, 'name': 'Fashion'},
-    {'id': 5, 'name': 'Furniture'},
-    {'id': 6, 'name': 'Home & Garden'},
-    {'id': 7, 'name': 'Sports'},
-    {'id': 8, 'name': 'Vehicles'},
-]
+#categories = [
+#    {'id': 1, 'name': 'Art'},
+#    {'id': 2, 'name': 'Electronics'},
+#    {'id': 3, 'name': 'Entertainment'},
+#    {'id': 4, 'name': 'Fashion'},
+#    {'id': 5, 'name': 'Furniture'},
+#    {'id': 6, 'name': 'Home & Garden'},
+#    {'id': 7, 'name': 'Sports'},
+#    {'id': 8, 'name': 'Vehicles'},
+#]
 # Create your views here.
 def index(request):
     return render(request, 'product/index.html', context={'products': products})
 
 def home_view(request):
-    return render(request, 'home.html', context={'categories': categories})
+    context = {'categories': Category.objects.all().order_by('name')}
+    return render(request, 'home.html', context)
