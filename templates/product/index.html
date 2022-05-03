@@ -2,8 +2,8 @@
 {% block content %}
     <h2 class="product">Welcome to FireSale - products</h2>
     {% for product in products %}
-        <h4>{{ product.name }}</h4>
-        <p>€ {{ product.price }}</p>
-        <p>{{ product.description }}</p>
+
+        {% include 'product/single_product.html' with product=product %}
+
     {% endfor %}
 {% endblock %}

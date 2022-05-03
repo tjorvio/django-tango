@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from product.models import Product
 #from django.http import HttpResponse
 
 from product.models import Category
@@ -26,10 +27,20 @@ from product.models import Product
 #    {'id': 8, 'name': 'Vehicles'},
 #]
 # Create your views here.
+
+
 def index(request):
-    context = {'products': Product.objects.all()}
+    #return render(request, 'product/index.html', context={'products': products})
+    context = {'products': Product.objects.all().order_by('name')}
     return render(request, 'product/index.html', context)
+  
 
 def home_view(request):
     context = {'categories': Category.objects.all().order_by('name')}
     return render(request, 'home.html', context)
+
+
+def get_product_by_id(request, id):
+    return render(request, 'product/product_details.html', {
+        'product': get_object_or_404(Product, pk=id)
+    })
