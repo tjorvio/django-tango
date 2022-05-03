@@ -1,0 +1,8 @@
+Búa til migrations
+python manage.py makemigrations
+
+Skoða SQL kóða fyrir migration
+python manage.py sqlmigrate product 0001_initial
+
+Búa til töflur í DB
+python manage.py migrate
