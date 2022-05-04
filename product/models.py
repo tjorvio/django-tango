@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.timezone import now
 
 # Create your models here.
 class Category(models.Model):
@@ -19,8 +20,8 @@ class Product(models.Model):
     name = models.CharField(max_length=255)
     price = models.FloatField()
     description = models.CharField(max_length=9999, blank=True)
-    CreatedAt = models.TimeField(blank=True)
-    SoldOrNot = models.IntegerField(blank=True)
+    CreatedAt = models.DateTimeField(default=now())
+    SoldOrNot = models.IntegerField(default='0')
     sellerID = models.ForeignKey('user.User', on_delete=models.CASCADE)
     # Maybe we should not have Cascaded on deletion of ConditionID
     ConditionID = models.ForeignKey(Condition, on_delete=models.CASCADE)
@@ -33,4 +34,5 @@ class Picture(models.Model):
 
     def __str__(self):
         return self.picture
+
 

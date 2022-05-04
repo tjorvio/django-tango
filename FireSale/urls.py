@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from product import views
 from product.views import home_view
 
 urlpatterns = [
@@ -24,4 +25,5 @@ urlpatterns = [
     path('products/', include('product.urls')),
     path('users', include('user.urls')),
     path('', home_view, name='home'),
+    path('create_product', views.create_product, name="create_product")
 ]
