@@ -34,3 +34,4 @@ class Picture(models.Model):
 
     def __str__(self):
         return self.picture
+
