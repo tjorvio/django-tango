@@ -27,3 +27,11 @@ class Product(models.Model):
     ConditionID = models.ForeignKey(Condition, on_delete=models.CASCADE)
     categoryID = models.ForeignKey(Category, on_delete=models.CASCADE)
 
+
+class Picture(models.Model):
+    picture = models.CharField(max_length=9999)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.picture
+
