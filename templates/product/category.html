@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2 class="product">Welcome to FireSale - products by category</h2>
+    {% if products|length > 0 %}
+        {% for product in products %}
+            {% include 'product/single_product.html' with product=product %}
+        {% endfor %}
+    {% else %}
+        <h5>No Products in category</h5>
+    {% endif %}
+{% endblock %}

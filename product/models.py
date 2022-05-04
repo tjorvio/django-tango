@@ -26,3 +26,4 @@ class Product(models.Model):
     # Maybe we should not have Cascaded on deletion of ConditionID
     ConditionID = models.ForeignKey(Condition, on_delete=models.CASCADE)
     categoryID = models.ForeignKey(Category, on_delete=models.CASCADE)
+
