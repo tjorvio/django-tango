@@ -14,7 +14,9 @@
 <body>
     {% include 'navbar.html' %}
     <div class="container">
+        {%  include 'product/categories.html' %}
         {% block content %}
+
         {% endblock %}
     </div>
     {% include 'footer.html' %}
