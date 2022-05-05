@@ -24,7 +24,7 @@ class Product(models.Model):
     SoldOrNot = models.IntegerField(default='0')
     sellerID = models.ForeignKey('user.User', on_delete=models.CASCADE)
     # Maybe we should not have Cascaded on deletion of ConditionID
-    ConditionID = models.ForeignKey(Condition, on_delete=models.CASCADE)
+    ConditionID = models.ForeignKey(Condition, on_delete=models.SET(0))
     categoryID = models.ForeignKey(Category, on_delete=models.CASCADE)
 
 
