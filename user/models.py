@@ -24,14 +24,15 @@ class User(models.Model):
     PasswordEncrypt = models.CharField(max_length=255)
     Username = models.CharField(max_length=255)
     StreetName = models.CharField(max_length=255)
-    Zip = models.FloatField()
+    Zip = models.FloatField(default=0)
     City = models.CharField(max_length=255)
     Picture = models.CharField(max_length=255)
-    PreferredPaymentID = models.ForeignKey(Payment, on_delete=models.CASCADE, null=True)
-    CountryID = models.ForeignKey(Country, on_delete=models.CASCADE)
+    PreferredPaymentID = models.ForeignKey(Payment, on_delete=models.SET_NULL, null=True)
+    CountryID = models.ForeignKey(Country, on_delete=models.SET_NULL, null=True)
 
 
 class Bid(models.Model):
+    BidAmount = models.FloatField(default=0)
     ProductID = models.ForeignKey(Product, on_delete=models.CASCADE)
     BuyerID = models.ForeignKey(User, on_delete=models.CASCADE)
     PaymentID = models.ForeignKey(Payment, on_delete=models.CASCADE)
