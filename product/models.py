@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.timezone import now
 
+
 # Create your models here.
 class Category(models.Model):
     name = models.CharField(max_length=255)
@@ -34,5 +35,14 @@ class Picture(models.Model):
 
     def __str__(self):
         return self.picture
+
+
+class Reviews(models.Model):
+    description = models.CharField(max_length=9999, blank=True)
+    stars = models.IntegerField()
+    buyerId = models.ForeignKey('user.User', on_delete=models.CASCADE)
+    productID = models.ForeignKey(Product, on_delete=models.CASCADE)
+
+
 
 
