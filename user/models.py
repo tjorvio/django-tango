@@ -30,10 +30,16 @@ class User(models.Model):
     PreferredPaymentID = models.ForeignKey(Payment, on_delete=models.SET_NULL, null=True)
     CountryID = models.ForeignKey(Country, on_delete=models.SET_NULL, null=True)
 
+    def __str__(self):
+        return self.Username
+
+    def get_payment_id(self):
+        return self.PreferredPaymentID
+
 
 class Bid(models.Model):
     BidAmount = models.FloatField(default=0)
     ProductID = models.ForeignKey(Product, on_delete=models.CASCADE)
     BuyerID = models.ForeignKey(User, on_delete=models.CASCADE)
     PaymentID = models.ForeignKey(Payment, on_delete=models.CASCADE)
-    StatusID = models.ForeignKey(Status, on_delete=models.CASCADE)
+    StatusID = models.ForeignKey(Status, default=1, on_delete=models.CASCADE)
