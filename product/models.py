@@ -43,6 +43,3 @@ class Reviews(models.Model):
     buyerId = models.ForeignKey('user.User', on_delete=models.CASCADE)
     productID = models.ForeignKey(Product, on_delete=models.CASCADE)
 
-
-
-

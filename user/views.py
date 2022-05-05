@@ -4,6 +4,12 @@ from FireSale.forms.user_form import UserCreateForm
 from user.models import Country, Payment
 from user.models import User
 
+from django.shortcuts import render, redirect
+
+from FireSale.forms.make_bid_form import MakeBidForm
+from user.models import Payment
+
+
 
 def index(request):
     # return render(request, 'product/index.html', context={'products': products})
@@ -13,16 +19,20 @@ def index(request):
 
 
 def create_user(request):
+
+
+
+def place_bid(request):
     if request.method == 'POST':
-        form = UserCreateForm(data=request.POST)
+        form = MakeBidForm(data=request.POST)
         if form.is_valid():
-            user = form.save()
-            user_image = User(picture=request.POST['picture'], user=user)
-            user_image.save()
+            bid = form.save(commit=False)
+            user = bid.BuyerID
+            bid.PaymentID = user.get_payment_id()
+            bid.save()
             return redirect('user-index')
     else:
-        form = UserCreateForm()
+        form = MakeBidForm()
 
-    return render(request, 'user/create_user.html', {
-        'form': form
+    return render(request, 'user/place_bid.html', {
     })
