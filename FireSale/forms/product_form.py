@@ -1,6 +1,6 @@
 from django.forms import ModelForm, widgets
 from django import forms
-from datetime import datetime
+
 from product.models import Product
 
 
