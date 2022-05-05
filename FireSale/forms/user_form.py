@@ -5,7 +5,6 @@ from user.models import User
 
 # Forms
 class UserCreateForm(ModelForm):
-    picture = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
 
     class Meta:
         model = User
@@ -17,6 +16,7 @@ class UserCreateForm(ModelForm):
             'streetname': widgets.TextInput(attrs={'class': 'form-control'}),
             'zip': widgets.NumberInput(attrs={'class': 'form-control'}),
             'city': widgets.TextInput(attrs={'class': 'form-control'}),
+            'picture': widgets.TextInput(attrs={'class': 'form-control'}),
             'preferredpaymentid': widgets.Select(attrs={'class': 'form-control'}),
             'countryid': widgets.Select(attrs={'class': 'form-control'}),
         }
