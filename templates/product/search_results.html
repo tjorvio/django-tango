@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
     <h2 class="product">Search results:</h2>
-    {% for product in products %}
-        {% include 'product/single_product.html' with product=product %}
-    {% endfor %}
+    {% if products|length > 0 %}
+        {% for product in products %}
+            {% include 'product/single_product.html' with product=product %}
+        {% endfor %}
+    {% else %}
+        <h5>Your search returned no results</h5>
+    {% endif %}
 {% endblock %}

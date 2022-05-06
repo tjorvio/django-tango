@@ -1,5 +1,21 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-    <h2>Welcome to FireSale - FRONT PAGE</h2>
-    {% include 'search_bar.html' %}
+    <section class="hero">
+        <div class="container">
+            <div class="col-12">
+                <div class="search">
+                    {% include 'search_bar.html' %}
+                </div>
+            </div>
+        </div><!-- .container-->
+        <img src="{% static 'images/Banner.jpg' %}"
+             alt="FireSale - What are you looking for ?"
+             class="hero-banner"
+        >
+    </section>
+    <div class="spacer"></div>
+    <div class="product-container">
+        {% include 'product/newest_products.html' %}
+    </div>
 {% endblock %}

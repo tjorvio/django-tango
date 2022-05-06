@@ -7,7 +7,7 @@ from product.models import Product
 
 # Create your views here.
 def index(request):
-    #return render(request, 'product/index.html', context={'products': products})
+    # return render(request, 'product/index.html', context={'products': products})
     sort_by = request.GET.get("sort", "l2h")
     if sort_by == "l2h":
         context = {'products': Product.objects.all().order_by('price'),
@@ -25,7 +25,9 @@ def index(request):
   
 
 def home_view(request):
-    context = {'categories': Category.objects.all().order_by('name')}
+    context = {'categories': Category.objects.all().order_by('name'),
+               'products': Product.objects.all().order_by('-CreatedAt')[:5]  # here we can control how many items we get
+               }
     return render(request, 'home.html', context)
 
 
@@ -35,11 +37,13 @@ def get_product_by_id(request, id):
                }
     return render(request, 'product/product_details.html', context)
 
+
 def category_view(request, id):
     context = {'products': Product.objects.filter(categoryID=id),
                'categories': Category.objects.all().order_by('name')
                }
     return render(request, 'product/category.html', context)
+
 
 def create_product(request):
     if request.method == 'POST':

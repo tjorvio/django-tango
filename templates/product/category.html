@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
     <h2 class="product">{{ category.name }}</h2>
-    {% if products|length > 0 %}
-        {% for product in products %}
-            {% include 'product/single_product.html' with product=product %}
-        {% endfor %}
-    {% else %}
-        <h5>No Products in category</h5>
-    {% endif %}
+    <div class="product-container">
+        {% if products|length > 0 %}
+            {% for product in products %}
+                {% include 'product/single_product.html' with product=product %}
+            {% endfor %}
+        {% else %}
+            <h5>No Products in category</h5>
+        {% endif %}
+    </div>
 {% endblock %}
