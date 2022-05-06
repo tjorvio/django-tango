@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils.timezone import now
 
@@ -23,7 +24,7 @@ class Product(models.Model):
     description = models.CharField(max_length=9999, blank=True)
     CreatedAt = models.DateTimeField(default=now())
     SoldOrNot = models.IntegerField(default='0')
-    sellerID = models.ForeignKey('user.User', on_delete=models.CASCADE)
+    sellerID = models.ForeignKey(User, on_delete=models.CASCADE)
     # Maybe we should not have Cascaded on deletion of ConditionID
     ConditionID = models.ForeignKey(Condition, on_delete=models.SET(0))
     categoryID = models.ForeignKey(Category, on_delete=models.CASCADE)
@@ -40,6 +41,5 @@ class Picture(models.Model):
 class Reviews(models.Model):
     description = models.CharField(max_length=9999, blank=True)
     stars = models.IntegerField()
-    buyerId = models.ForeignKey('user.User', on_delete=models.CASCADE)
+    buyerId = models.ForeignKey(User, on_delete=models.CASCADE)
     productID = models.ForeignKey(Product, on_delete=models.CASCADE)
-
