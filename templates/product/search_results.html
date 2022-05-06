@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2 class="product">Search results:</h2>
+    {% for product in products %}
+        {% include 'product/single_product.html' with product=product %}
+    {% endfor %}
+{% endblock %}

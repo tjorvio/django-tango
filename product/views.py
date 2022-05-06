@@ -7,7 +7,7 @@ from product.models import Product
 
 # Create your views here.
 def index(request):
-    #return render(request, 'product/index.html', context={'products': products})
+    # return render(request, 'product/index.html', context={'products': products})
     context = {'products': Product.objects.all().order_by('name'),
                'categories': Category.objects.all().order_by('name')
                }
@@ -25,11 +25,13 @@ def get_product_by_id(request, id):
                }
     return render(request, 'product/product_details.html', context)
 
+
 def category_view(request, id):
     context = {'products': Product.objects.filter(categoryID=id),
                'categories': Category.objects.all().order_by('name')
                }
     return render(request, 'product/category.html', context)
+
 
 def create_product(request):
     if request.method == 'POST':
@@ -43,5 +45,14 @@ def create_product(request):
         form = ProductCreateForm()
 
     return render(request, 'product/create_product.html', {
-        'form' : form
+        'form': form
     })
+
+
+def search_results(request):
+    if request.method == 'GET':
+        search_term = request.GET.get('search')
+        context = {'products': Product.objects.filter(name__icontains=search_term),
+                   'categories': Category.objects.all().order_by('name')
+                   }
+        return render(request, 'product/search_results.html', context)
