@@ -7,4 +7,9 @@
     {% for product_picture in product.picture_set.all %}
         <img class="product-picture" src="{{ product_picture.picture }}" alt="Picture of product"/>
     {% endfor %}
+    <form method="GET" action="{% url 'place_bid' %}">
+     <button type="submit" class="btn btn-primary"
+             value="{{ product.id }}" name="product_id">Place Bid
+     </button>
+
 {% endblock %}

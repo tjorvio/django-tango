@@ -10,6 +10,7 @@ def index(request):
 
 
 def place_bid(request):
+
     if request.method == 'POST':
         form = MakeBidForm(data=request.POST)
         if form.is_valid():
@@ -19,7 +20,8 @@ def place_bid(request):
             bid.save()
             return redirect('user-index')
     else:
-        form = MakeBidForm()
+        product_id = request.GET.get('product_id')
+        form = MakeBidForm(initial={'ProductID': product_id})
 
     return render(request, 'user/place_bid.html', {
         'form': form
