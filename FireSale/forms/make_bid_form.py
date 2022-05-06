@@ -8,9 +8,9 @@ from user.models import Bid
 class MakeBidForm(ModelForm):
     class Meta:
         model = Bid
-        exclude = ['id', 'StatusID', 'PaymentID']
+        exclude = ['id', 'StatusID', 'PaymentID',]
         widgets = {
             'BidAmount': widgets.NumberInput(attrs={'class': 'form-control'}),
             'BuyerID': widgets.NumberInput(attrs={'class': 'form-control'}),
-            'ProductID': widgets.NumberInput(attrs={'class': 'form-control'}),
+            'ProductID': forms.HiddenInput(),
         }
