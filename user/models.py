@@ -39,6 +39,12 @@ class Bid(models.Model):
     StatusID = models.ForeignKey(Status, default=1, on_delete=models.CASCADE)
 
 
+class Rating(models.Model):
+    stars = models.FloatField(default=0)
+    count = models.FloatField(default=0)
+    UserID = models.ForeignKey(Profile, on_delete=models.CASCADE)
+
+
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
