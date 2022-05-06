@@ -7,10 +7,20 @@ from product.models import Product
 
 # Create your views here.
 def index(request):
-    # return render(request, 'product/index.html', context={'products': products})
-    context = {'products': Product.objects.all().order_by('name'),
-               'categories': Category.objects.all().order_by('name')
-               }
+    #return render(request, 'product/index.html', context={'products': products})
+    sort_by = request.GET.get("sort", "l2h")
+    if sort_by == "l2h":
+        context = {'products': Product.objects.all().order_by('price'),
+                   'categories': Category.objects.all().order_by('name')
+                   }
+    elif sort_by == "h2l":
+        context = {'products': Product.objects.all().order_by('-price'),
+                   'categories': Category.objects.all().order_by('name')
+                   }
+    else:
+        context = {'products': Product.objects.all().order_by('name'),
+                   'categories': Category.objects.all().order_by('name')
+                   }
     return render(request, 'product/index.html', context)
   
 
@@ -25,13 +35,11 @@ def get_product_by_id(request, id):
                }
     return render(request, 'product/product_details.html', context)
 
-
 def category_view(request, id):
     context = {'products': Product.objects.filter(categoryID=id),
                'categories': Category.objects.all().order_by('name')
                }
     return render(request, 'product/category.html', context)
-
 
 def create_product(request):
     if request.method == 'POST':
