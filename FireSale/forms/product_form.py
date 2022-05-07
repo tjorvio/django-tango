@@ -17,6 +17,6 @@ class ProductCreateForm(ModelForm):
             'category': widgets.Select(attrs={'class': 'form-control'}),
             'price': widgets.NumberInput(attrs={'class': 'form-control'}),
             'condition': widgets.Select(attrs={'class': 'form-control'}),
-            'sellerID': widgets.NumberInput(attrs={'class': 'form-control'}),
+            'sellerID': widgets.HiddenInput(),
             # 'CreatedAt': forms.DateTimeField(default=datetime.now)
         }

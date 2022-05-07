@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 
 from FireSale.forms.product_form import ProductCreateForm
@@ -44,7 +45,7 @@ def category_view(request, id):
                }
     return render(request, 'product/category.html', context)
 
-
+@login_required
 def create_product(request):
     if request.method == 'POST':
         form = ProductCreateForm(data=request.POST)
@@ -54,7 +55,8 @@ def create_product(request):
             product_image.save()
             return redirect('product-index')
     else:
-        form = ProductCreateForm()
+        cur_user = request.user
+        form = ProductCreateForm(initial={'sellerID': cur_user})
 
     return render(request, 'product/create_product.html', {
         'form': form

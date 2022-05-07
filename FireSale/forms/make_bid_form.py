@@ -11,7 +11,7 @@ class MakeBidForm(ModelForm):
         exclude = ['id', 'StatusID']
         widgets = {
             'BidAmount': widgets.NumberInput(attrs={'class': 'form-control'}),
-            'UserID': widgets.NumberInput(attrs={'class': 'form-control'}),
+            'UserID': widgets.HiddenInput(),
             'PaymentID': widgets.Select(attrs={'class': 'form-control'}),
             'ProductID': forms.HiddenInput(),
         }
