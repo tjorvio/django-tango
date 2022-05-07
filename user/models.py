@@ -37,7 +37,7 @@ class Profile(models.Model):
 class Bid(models.Model):
     BidAmount = models.FloatField(default=0)
     ProductID = models.ForeignKey(Product, on_delete=models.CASCADE)
-    UserID = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    UserID = models.ForeignKey(User, on_delete=models.CASCADE)
     PaymentID = models.ForeignKey(Payment, on_delete=models.CASCADE)
     StatusID = models.ForeignKey(Status, default=1, on_delete=models.CASCADE)
 
