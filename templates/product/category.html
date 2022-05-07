@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
     <h2 class="product">{{ category.name }}</h2>
+    {%  include 'product/sort_by.html' %}
     <div class="product-container">
         {% if products|length > 0 %}
             {% for product in products %}

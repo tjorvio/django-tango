@@ -21,9 +21,12 @@ class Payment(models.Model):
     PaymentMethod = models.CharField(max_length=255)
     PreferredPayment = models.BooleanField(default=0)
 
+    def __str__(self):
+        return self.PaymentMethod
+
 
 class Profile(models.Model):
-    User = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     StreetName = models.CharField(max_length=255)
     Zip = models.FloatField(default=0)
     City = models.CharField(max_length=255)

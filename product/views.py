@@ -26,7 +26,7 @@ def index(request):
 
 def home_view(request):
     context = {'categories': Category.objects.all().order_by('name'),
-               'products': Product.objects.all().order_by('-CreatedAt')[:5]  # here we can control how many items we get
+               'products': Product.objects.all().order_by('-CreatedAt')[:4]  # here we can control how many items we get
                }
     return render(request, 'home.html', context)
 
