@@ -6,6 +6,7 @@ from FireSale.forms.make_bid_form import MakeBidForm
 
 
 # Create your views here.
+from product.models import Product
 from user.forms.profile_form import ProfileForm
 from user.models import Profile
 
@@ -44,8 +45,8 @@ def register(request):
     return render(request, 'user/register.html', {
         'form': UserCreationForm()
     })
-
-def profile(request):
+@login_required
+def edit_profile(request):
     profile = Profile.objects.filter(user=request.user).first()
     if request.method == 'POST':
         form = ProfileForm(instance=profile, data=request.POST)
@@ -54,6 +55,14 @@ def profile(request):
             profile.user = request.user
             profile.save()
             return redirect('profile')
-    return render(request, 'user/profile.html', {
+    return render(request, 'user/edit_profile.html', {
         'form': ProfileForm(instance=profile)
     })
+@login_required
+def profile(request):
+    context = {
+        'cur_user': request.user,
+        'profile_info': Profile.objects.all(),
+        'user_products': Product.objects.filter(sellerID=request.user.id)
+               }
+    return render(request, 'user/profile.html', context)

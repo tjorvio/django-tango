@@ -63,6 +63,37 @@ def create_product(request):
     })
 
 
+@login_required
+def edit_product(request):
+    product = Product.objects.filter()
+    if request.method == 'POST':
+        form = ProductCreateForm(data=request.POST)
+        if form.is_valid():
+            product = form.save()
+            product_image = Picture(picture=request.POST['picture'], product=product)
+            product_image.save()
+            return redirect('product-index')
+    else:
+        cur_user = request.user
+        form = ProductCreateForm(initial={'sellerID': cur_user})
+
+    return render(request, 'product/create_product.html', {
+        'form': form
+    })
+
+
+    profile = Profile.objects.filter(user=request.user).first()
+    if request.method == 'POST':
+        form = ProfileForm(instance=profile, data=request.POST)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.user = request.user
+            profile.save()
+            return redirect('profile')
+    return render(request, 'user/edit_profile.html', {
+        'form': ProfileForm(instance=profile)
+    })
+
 def search_results(request):
     if request.method == 'GET':
         search_term = request.GET.get('search')

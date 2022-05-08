@@ -62,7 +62,14 @@
 .product-picture {
     width:100%;
 }
-
+.profile_product {
+    width: 350px;
+    background: #F1F1F1;
+    height: 15em;
+    flex: 0 0 25%;
+    padding: 0.5em;
+    box-sizing: border-box;
+}
 #filter-by {
     float: right;
 }
