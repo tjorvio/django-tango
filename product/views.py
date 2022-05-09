@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 
+from FireSale.forms.edit_product_form import ProductEditForm
 from FireSale.forms.product_form import ProductCreateForm
 from product.models import Category, Picture
 from product.models import Product
@@ -53,7 +54,7 @@ def create_product(request):
             product = form.save()
             product_image = Picture(picture=request.POST['picture'], product=product)
             product_image.save()
-            return redirect('product-index')
+            return redirect('profile')
     else:
         cur_user = request.user
         form = ProductCreateForm(initial={'sellerID': cur_user})
@@ -64,35 +65,30 @@ def create_product(request):
 
 
 @login_required
-def edit_product(request):
-    product = Product.objects.filter()
+def edit_product(request, id):
+    product = get_object_or_404(Product, pk=id)
+    product_image = Picture.objects.get(product=product)
     if request.method == 'POST':
-        form = ProductCreateForm(data=request.POST)
+        form = ProductEditForm(data=request.POST, instance=product)
         if form.is_valid():
-            product = form.save()
-            product_image = Picture(picture=request.POST['picture'], product=product)
-            product_image.save()
-            return redirect('product-index')
-    else:
-        cur_user = request.user
-        form = ProductCreateForm(initial={'sellerID': cur_user})
-
-    return render(request, 'product/create_product.html', {
-        'form': form
-    })
-
-
-    profile = Profile.objects.filter(user=request.user).first()
-    if request.method == 'POST':
-        form = ProfileForm(instance=profile, data=request.POST)
-        if form.is_valid():
-            profile = form.save(commit=False)
-            profile.user = request.user
-            profile.save()
+            form.save()
+            # product_image = Picture(picture=request.POST['picture'], product=product)
+            # product_image.save()
             return redirect('profile')
-    return render(request, 'user/edit_profile.html', {
-        'form': ProfileForm(instance=profile)
+    else:
+        # cur_user = request.user
+        form = ProductEditForm(instance=product)
+
+    return render(request, 'product/edit_product.html', {
+        'form': form,
+        'id': id
     })
+
+@login_required
+def delete_product(request, id):
+    product = get_object_or_404(Product, pk=id)
+    product.delete()
+    return redirect('profile')
 
 def search_results(request):
     if request.method == 'GET':

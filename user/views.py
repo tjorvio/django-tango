@@ -62,7 +62,7 @@ def edit_profile(request):
 def profile(request):
     context = {
         'cur_user': request.user,
-        'profile_info': Profile.objects.all(),
+        'profile_info': Profile.objects.filter(user=request.user).first(),
         'user_products': Product.objects.filter(sellerID=request.user.id)
                }
     return render(request, 'user/profile.html', context)

@@ -65,7 +65,7 @@
 .profile_product {
     width: 350px;
     background: #F1F1F1;
-    height: 15em;
+    height: 100%;
     flex: 0 0 25%;
     padding: 0.5em;
     box-sizing: border-box;
@@ -121,4 +121,30 @@
     width: 40px;
     padding: 0;
     border: 0;
+}
+
+/* PROFILE PAGE STYLES */
+.profile-img-container {
+    width: 50px;
+    height: auto;
+}
+.user-name {
+    font-weight: bold;
+}
+.profile-img {
+    float: left;
+    border-radius: 50%;
+    max-width:100%;
+    max-height:100%;
+    margin-right: 0.5rem;
+}
+.profile-product-img {
+    float: left;
+    width: 64px;
+    height: auto;
+    object-fit: cover;
+    margin-right: 0.5rem;
+}
+.profile-edit-product {
+    display: inline-block;
 }
