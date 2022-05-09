@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from FireSale.forms.make_bid_form import MakeBidForm
 
@@ -8,7 +8,7 @@ from FireSale.forms.make_bid_form import MakeBidForm
 # Create your views here.
 from product.models import Product
 from user.forms.profile_form import ProfileForm
-from user.models import Profile
+from user.models import Profile, Bid, Status
 
 
 def index(request):
@@ -23,7 +23,7 @@ def place_bid(request):
             bid = form.save(commit=False)  # Save data as a bid model class, but don´t commit to database
 
             bid.save()  # Save all data in database
-            return redirect('user-index')
+            return redirect('profile')
     else:
         product_id = request.GET.get('product_id')  # vista product_id úr GET request-inu
         cur_user = request.user
@@ -60,9 +60,33 @@ def edit_profile(request):
     })
 @login_required
 def profile(request):
+    # all_bids = Bid.objects.all()
+    my_products = Product.objects.filter(sellerID=request.user.id)  # .values_list('id')
+    open_bids = Bid.objects.filter(ProductID__in=my_products, StatusID=Status.objects.get(id=1))
+
     context = {
         'cur_user': request.user,
         'profile_info': Profile.objects.filter(user=request.user).first(),
-        'user_products': Product.objects.filter(sellerID=request.user.id)
+        'user_products': my_products,
+        'open_bids': open_bids,
                }
     return render(request, 'user/profile.html', context)
+
+
+@login_required
+def accept_bid(request, id):
+    bid = get_object_or_404(Bid, pk=id)
+    bid.StatusID = Status.objects.get(id=2)
+    bid.save()
+    product_sold = bid.ProductID
+    product_sold.SoldOrNot = 1
+    product_sold.save()
+    return redirect('profile')
+
+
+@login_required
+def decline_bid(request, id):
+    bid = get_object_or_404(Bid, pk=id)
+    bid.StatusID = Status.objects.get(id=3)
+    bid.save()
+    return redirect('profile')

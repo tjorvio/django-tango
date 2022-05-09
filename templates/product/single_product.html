@@ -3,6 +3,11 @@
         <img class="product-picture" src="{{ product.picture_set.first.picture }}" alt="Picture of product"/>
 
         <h4>{{ product.name }}</h4>
-        <p><strong>€ {{ product.price }}</strong></p>
+        {% if product.SoldOrNot == 1 %}
+            <p><strong>Product SOLD</strong></p>
+        {% else %}
+            <p><strong>€ {{ product.price }}</strong></p>
+        {% endif %}
+
     </a>
 </div>

@@ -26,9 +26,9 @@
             </div>
             <div class="col">
                 <h4>BIDS</h4>
-{#                {% for bid in user_products %}#}
-{#                    {% include 'product/profile_product.html' with product=product %}#}
-{#                {% endfor %}#}
+                {% for bid in open_bids %}
+                    {% include 'user/open_bid.html' with bid=bid %}
+                {% endfor %}
             </div>
         </div>
     </div>

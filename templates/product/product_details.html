@@ -2,17 +2,23 @@
 {% block content %}
     <h1>{{ product.name }}</h1>
     <p>{{ product.description }}</p>
-    <p>${{ product.price }}</p>
-
+    {% if product.SoldOrNot == 1 %}
+        <p><strong>Product SOLD</strong></p>
+    {% else %}
+        <p>${{ product.price }}</p>
+    {% endif %}
     {% for product_picture in product.picture_set.all %}
         <img class="product-picture" src="{{ product_picture.picture }}" alt="Picture of product"/>
     {% endfor %}
     {% if user.is_authenticated %}
-        <form method="GET" action="{% url 'place_bid' %}">
-         <button type="submit" class="btn btn-primary"
-                 value="{{ product.id }}" name="product_id">Place Bid
-         </button>
-        </form>
+        {% if product.SoldOrNot == 0 %}
+            <form method="GET" action="{% url 'place_bid' %}">
+             <button type="submit" class="btn btn-primary"
+                     value="{{ product.id }}" name="product_id">Place Bid
+             </button>
+            </form>
+        {% endif %}
+
     {% else %}
         <p><a href="{% url 'login' %}">Login</a> to place a bid</p>
     {% endif %}

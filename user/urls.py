@@ -10,4 +10,6 @@ urlpatterns = [
     path('logout', LogoutView.as_view(next_page='login'), name='logout'),
     path('profile', views.profile, name='profile'),
     path('profile/edit', views.edit_profile, name='edit_profile'),
+    path('accept/<int:id>', views.accept_bid, name='accept_bid'),
+    path('decline/<int:id>', views.decline_bid, name='decline_bid'),
 ]

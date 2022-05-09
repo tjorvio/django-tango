@@ -29,6 +29,9 @@ class Product(models.Model):
     ConditionID = models.ForeignKey(Condition, on_delete=models.SET(0))
     categoryID = models.ForeignKey(Category, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.name
+
 
 class Picture(models.Model):
     picture = models.CharField(max_length=9999)

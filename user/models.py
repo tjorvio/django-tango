@@ -16,6 +16,9 @@ class Country(models.Model):
 class Status(models.Model):
     name = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.name
+
 
 class Payment(models.Model):
     PaymentMethod = models.CharField(max_length=255)
@@ -40,6 +43,9 @@ class Bid(models.Model):
     UserID = models.ForeignKey(User, on_delete=models.CASCADE)
     PaymentID = models.ForeignKey(Payment, on_delete=models.CASCADE)
     StatusID = models.ForeignKey(Status, default=1, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.ProductID.name} + Bid: €{self.BidAmount}"
 
 
 class Rating(models.Model):
