@@ -4,8 +4,9 @@ from django.shortcuts import render, get_object_or_404, redirect
 
 from FireSale.forms.edit_product_form import ProductEditForm
 from FireSale.forms.product_form import ProductCreateForm
+
 from product.models import Category, Picture, Product
-from user.models import Profile
+from user.models import Profile, Bid
 
 
 
@@ -40,7 +41,11 @@ def get_product_by_id(request, id):
     seller_profile = Profile.objects.get(user=product.sellerID)
     context = {'product': get_object_or_404(Product, pk=id),
                'categories': Category.objects.all().order_by('name'),
+
+               'highest_bid': Bid.objects.filter(ProductID=id).order_by('-BidAmount').first()
+
                'seller': seller_profile,
+
                }
     return render(request, 'product/product_details.html', context)
 
