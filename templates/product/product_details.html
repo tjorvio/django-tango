@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
     <h1>{{ product.name }}</h1>
     <p>{{ product.description }}</p>
@@ -6,7 +7,11 @@
         <p><strong>Product SOLD</strong></p>
     {% else %}
         <p>${{ product.price }}</p>
+        <p>Highest bid: {{ highest_bid.BidAmount }}</p>
     {% endif %}
+
+        {% include 'user/product_seller.html' with seller_profile=seller %}
+
     {% for product_picture in product.picture_set.all %}
         <img class="product-picture" src="{{ product_picture.picture }}" alt="Picture of product"/>
     {% endfor %}

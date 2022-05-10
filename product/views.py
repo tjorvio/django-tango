@@ -1,11 +1,14 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.shortcuts import render, get_object_or_404, redirect
 
 from FireSale.forms.edit_product_form import ProductEditForm
 from FireSale.forms.picture_form import PictureForm
 from FireSale.forms.product_form import ProductCreateForm
-from product.models import Category, Picture
-from product.models import Product
+
+from product.models import Category, Picture, Product
+from user.models import Profile, Bid
+
 
 
 # Create your views here.
@@ -35,8 +38,13 @@ def home_view(request):
 
 
 def get_product_by_id(request, id):
+    product = Product.objects.get(id=id)
+    seller_profile = Profile.objects.get(user=product.sellerID)
     context = {'product': get_object_or_404(Product, pk=id),
-               'categories': Category.objects.all().order_by('name')
+               'categories': Category.objects.all().order_by('name'),
+               'highest_bid': Bid.objects.filter(ProductID=id).order_by('-BidAmount').first(),
+               'seller': seller_profile,
+
                }
     return render(request, 'product/product_details.html', context)
 
