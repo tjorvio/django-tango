@@ -1,7 +1,7 @@
 from django.forms import ModelForm, widgets
 from django import forms
 
-from product.models import Product
+from product.models import Product, Picture
 
 
 # Forms.
