@@ -38,11 +38,11 @@ class Product(models.Model):
 def uuid_imagepath(instance, filename):
     ext = filename.split('.')[-1]
     filename = "%s.%s" % (uuid.uuid4(), ext)
-    return os.path.join('static/images', filename)
+    return os.path.join('static/upload_images', filename)
 
 
 class Picture(models.Model):
-    picture = models.CharField(max_length=9999)
+    picture = models.CharField(max_length=9999, null=True, blank=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     picturedata = models.ImageField(upload_to=uuid_imagepath, null=True, blank=True)
 
