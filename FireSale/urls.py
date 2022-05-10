@@ -24,5 +24,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('products/', include('product.urls')),
     path('users/', include('user.urls')),
-    path('', product_views.home_view, name='home'),
+    path('messages/', include('django_messages.urls')),
+    path('', product_views.home_view, name='home')
 ]
