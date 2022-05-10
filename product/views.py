@@ -41,9 +41,7 @@ def get_product_by_id(request, id):
     seller_profile = Profile.objects.get(user=product.sellerID)
     context = {'product': get_object_or_404(Product, pk=id),
                'categories': Category.objects.all().order_by('name'),
-
-               'highest_bid': Bid.objects.filter(ProductID=id).order_by('-BidAmount').first()
-
+               'highest_bid': Bid.objects.filter(ProductID=id).order_by('-BidAmount').first(),
                'seller': seller_profile,
 
                }
