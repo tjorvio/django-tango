@@ -5,6 +5,7 @@ from FireSale.forms.edit_product_form import ProductEditForm
 from FireSale.forms.product_form import ProductCreateForm
 from product.models import Category, Picture
 from product.models import Product
+from user.models import Bid
 
 
 # Create your views here.
@@ -35,7 +36,8 @@ def home_view(request):
 
 def get_product_by_id(request, id):
     context = {'product': get_object_or_404(Product, pk=id),
-               'categories': Category.objects.all().order_by('name')
+               'categories': Category.objects.all().order_by('name'),
+               'highest_bid': Bid.objects.filter(ProductID=id).order_by('-BidAmount').first()
                }
     return render(request, 'product/product_details.html', context)
 

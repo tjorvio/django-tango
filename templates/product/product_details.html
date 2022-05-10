@@ -6,7 +6,9 @@
         <p><strong>Product SOLD</strong></p>
     {% else %}
         <p>${{ product.price }}</p>
+        <p>Highest bid: {{ highest_bid.BidAmount }}</p>
     {% endif %}
+
     {% for product_picture in product.picture_set.all %}
         <img class="product-picture" src="{{ product_picture.picture }}" alt="Picture of product"/>
     {% endfor %}
