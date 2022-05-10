@@ -90,3 +90,15 @@ def decline_bid(request, id):
     bid.StatusID = Status.objects.get(id=3)
     bid.save()
     return redirect('profile')
+
+
+def seller_profile(request, id):
+    # Here we are missing review data and rating
+    # products =   # .values_list('id')
+    seller = Profile.objects.get(id=id).user
+
+    context = {
+        'profile_info': Profile.objects.get(id=id),
+        'seller_products': Product.objects.filter(sellerID=seller),
+               }
+    return render(request, 'user/seller_profile.html', context)
