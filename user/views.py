@@ -1,9 +1,9 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
+from FireSale.forms.register_form import SignUpForm
 from django.shortcuts import render, redirect, get_object_or_404
 
 from FireSale.forms.make_bid_form import MakeBidForm
-
 
 # Create your views here.
 from product.models import Product
@@ -14,9 +14,9 @@ from user.models import Profile, Bid, Status
 def index(request):
     return render(request, 'user/index.html')
 
+
 @login_required
 def place_bid(request):
-
     if request.method == 'POST':
         form = MakeBidForm(data=request.POST)
         if form.is_valid():
@@ -29,22 +29,35 @@ def place_bid(request):
         cur_user = request.user
         print(cur_user)
         print(cur_user.username)
-        form = MakeBidForm(initial={'ProductID': product_id, 'UserID':cur_user.id})  # Set ProductID á id úr request
+        form = MakeBidForm(initial={'ProductID': product_id, 'UserID': cur_user.id})  # Set ProductID á id úr request
 
     return render(request, 'user/place_bid.html', {
         'form': form
     })
 
 
+# def register(request):
+#    if request.method == 'POST':
+#        form = UserCreationForm(data=request.POST)
+#        if form.is_valid():
+#            form.save()
+#            return redirect('login')
+#    return render(request, 'user/register.html', {
+#        'form': UserCreationForm()
+#    })
+
 def register(request):
-    if request.method == 'POST':
-        form = UserCreationForm(data=request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('login')
-    return render(request, 'user/register.html', {
-        'form': UserCreationForm()
-    })
+    form = SignUpForm(request.POST)
+    if form.is_valid():
+        form.save()
+        return redirect('login')
+
+    context = {
+        "form": form
+    }
+    return render(request, "user/register.html", context)
+
+
 @login_required
 def edit_profile(request):
     profile = Profile.objects.filter(user=request.user).first()
@@ -58,6 +71,8 @@ def edit_profile(request):
     return render(request, 'user/edit_profile.html', {
         'form': ProfileForm(instance=profile)
     })
+
+
 @login_required
 def profile(request):
     # all_bids = Bid.objects.all()
@@ -69,7 +84,7 @@ def profile(request):
         'profile_info': Profile.objects.filter(user=request.user).first(),
         'user_products': my_products,
         'open_bids': open_bids,
-               }
+    }
     return render(request, 'user/profile.html', context)
 
 

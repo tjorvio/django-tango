@@ -5,7 +5,7 @@ from user.models import Bid
 
 
 # Forms.
-class MakeBidForm(ModelForm):
+class MakMessageForm(ModelForm):
     class Meta:
         model = Bid
         exclude = ['id', 'StatusID']
