@@ -13,7 +13,7 @@
         {% include 'user/product_seller.html' with seller_profile=seller %}
 
     {% for product_picture in product.picture_set.all %}
-        <img class="product-picture" src="{{ product_picture.picture }}" alt="Picture of product"/>
+        <img class="product-picture" src="{{ product_picture.picturedata.url }}" alt="Picture of product"/>
     {% endfor %}
     {% if user.is_authenticated %}
         {% if product.SoldOrNot == 0 %}
