@@ -27,6 +27,8 @@
     {% else %}
         <p><a href="{% url 'login' %}">Login</a> to place a bid</p>
     {% endif %}
+    <p></p>
+    <h4><strong>Similar items </strong></h4>
     <div class="product-container">
         {% for product in similar_products %}
             {% include 'product/single_product.html' with categoryID=product.categoryID %}
