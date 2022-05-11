@@ -11,16 +11,13 @@
                 <a class="edit-user-link" href="{% url 'edit_profile' %}">Edit Profile</a>
             </div>
             <div class="col">
+                <span class="bio">{{ profile_info.Bio }}</span><br>
+            </div>
+            <div class="col">
                 <form action="{% url 'create_product' %}" method="get">
                     <input type="submit" value="+ ADD PRODUCT" />
                 </form>
             </div>
-                        <div class="col">
-                <form action="{% load inbox %}" method="get">
-                    <input type="submit" value="+ ADD PRODUCT" />
-                </form>
-            </div>
-
         </div>
         <div class="spacer"></div>
         <div class="row align-items-start">
