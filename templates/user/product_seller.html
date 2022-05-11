@@ -1,0 +1,13 @@
+{% if seller.Picture %}
+    <div class="profile-img-container">
+        <img class="profile-img" src="{{ seller.Picture }}" alt="Profile-image"/>
+    </div>
+{% else %}
+    <div class="profile-img-container">
+        <img class="profile-img"
+             src="https://secure.gravatar.com/avatar/5367882114b3c04f3af6dfbf010d9e35?s=256&d=mm&r=g"
+             alt="Profile-image"/>
+    </div>
+{%  endif %}
+<span class="user-name text-uppercase">{{ seller.user.username }}</span><br>
+<a class="edit-user-link" href="{% url 'seller_profile' seller.id %}">View profile</a>

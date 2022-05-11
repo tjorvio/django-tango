@@ -25,5 +25,5 @@ urlpatterns = [
     path('products/', include('product.urls')),
     path('users/', include('user.urls')),
     # path('messages/', include('django_messages.urls')),
-    path('', product_views.home_view, name='home')
+    path('', product_views.home_view, name='home'),
 ]
