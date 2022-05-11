@@ -2,8 +2,47 @@
 {% block content %}
     <h1>Sign-up</h1>
     <form class="form form-horizontal" method="POST" action=".">
-        {% csrf_token %}
-        {{ form }}
+        <div class="form-group">
+            {% csrf_token %}
+            <label for="username">Username: </label>
+            <div>{{ form.username }}</div>
+            <small id="usernameHelp" class="form-text text-muted">What other users will know you as.</small>
+        </div>
+        <div class="form-group">
+            <label for="email">Email: </label>
+            <div>
+            {{ form.email }}
+            </div>
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+            <label for="first_name">First name: </label>
+            <div>
+            {{ form.first_name }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="first_name">Last name: </label>
+            <div>
+            {{ form.last_name }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password1">Password: </label>
+            <div>
+                {{ form.password1 }}
+            </div>
+            <small id="emailHelp" class="form-text text-muted">A minimum of 8 letters.</small>
+        </div>
+        <div class="form-group">
+            <label for="password2">Password, again:</label>
+            <div>
+            {{ form.password2 }}
+            </div>
+            <small id="emailHelp" class="form-text text-muted">This must match the earlier password.</small>
+        </div>
+        <div>
         <input type="submit" class="btn btn-primary" value="Sign Up" />
+        </div>
     </form>
 {% endblock %}

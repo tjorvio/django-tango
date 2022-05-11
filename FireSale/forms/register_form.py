@@ -44,7 +44,7 @@ class SignUpForm(UserCreationForm):
             'id': 'password1',
             'type': 'password',
             'class': 'form-input',
-            'placeholder': 'password',
+            'placeholder': 'Your Password',
             'minlength': '8'
         })
         self.fields["password2"].widget.attrs.update({
@@ -53,7 +53,7 @@ class SignUpForm(UserCreationForm):
             'id': 'password2',
             'type': 'password',
             'class': 'form-input',
-            'placeholder': 'password',
+            'placeholder': 'Your Password, again',
             'minlength': '8'
         })
 
