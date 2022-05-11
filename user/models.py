@@ -50,13 +50,13 @@ class Bid(models.Model):
         return f"{self.ProductID.name} + Bid: €{self.BidAmount}"
 
 class Order(models.Model):
-    # Contact info
+    # Contact info ---
     full_name = models.CharField(max_length=255)
     street_name = models.CharField(max_length=255)
     city = models.CharField(max_length=255)
     zip = models.IntegerField()
     CountryID = models.ForeignKey(Country, on_delete=models.SET_NULL, null=True)
-    # Payment info
+    # Payment info --
     cardholder = models.CharField(max_length=255)
     card_number = models.CharField(max_length=16)
     expire_month = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(12)])
