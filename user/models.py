@@ -34,6 +34,7 @@ class Profile(models.Model):
     Zip = models.FloatField(default=0)
     City = models.CharField(max_length=255)
     Picture = models.CharField(max_length=255)
+    Bio = models.CharField(max_length=255, default=None, null=True)
     CountryID = models.ForeignKey(Country, on_delete=models.SET_NULL, null=True)
 
 
