@@ -6,7 +6,8 @@ from product.models import Product, Picture
 
 # Forms.
 class ProductCreateForm(ModelForm):
-    picture = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    # picture = forms.CharField(required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    picture = Picture()
 
     class Meta:
         model = Product
