@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect
 
 from FireSale.forms.edit_product_form import ProductEditForm
@@ -39,13 +40,16 @@ def home_view(request):
 def get_product_by_id(request, id):
     product = Product.objects.get(id=id)
     seller_profile = Profile.objects.get(user=product.sellerID)
+    same_category = Product.objects.filter(categoryID=product.categoryID).filter(~Q(id=product.id))
+
     context = {'product': get_object_or_404(Product, pk=id),
                'categories': Category.objects.all().order_by('name'),
 
-               'highest_bid': Bid.objects.filter(ProductID=id).order_by('-BidAmount').first()
+               'highest_bid': Bid.objects.filter(ProductID=id).order_by('-BidAmount').first(),
 
                'seller': seller_profile,
 
+               'similar_products': same_category
                }
     return render(request, 'product/product_details.html', context)
 
