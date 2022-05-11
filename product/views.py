@@ -4,6 +4,7 @@ from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect
 
 from FireSale.forms.edit_product_form import ProductEditForm
+from FireSale.forms.picture_form import PictureForm
 from FireSale.forms.product_form import ProductCreateForm
 
 from product.models import Category, Picture, Product
@@ -64,17 +65,20 @@ def category_view(request, id):
 def create_product(request):
     if request.method == 'POST':
         form = ProductCreateForm(data=request.POST)
-        if form.is_valid():
+        form2 = PictureForm(request.POST, request.FILES)
+        if form.is_valid() and form2.is_valid():
             product = form.save()
-            product_image = Picture(picture=request.POST['picture'], product=product)
-            product_image.save()
+            form2.instance.product = product
+            form2.save()
             return redirect('profile')
     else:
         cur_user = request.user
         form = ProductCreateForm(initial={'sellerID': cur_user})
+        form2 = PictureForm()
 
     return render(request, 'product/create_product.html', {
-        'form': form
+        'form': form,
+        'form2': form2
     })
 
 
