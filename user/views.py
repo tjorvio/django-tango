@@ -63,12 +63,14 @@ def profile(request):
     # all_bids = Bid.objects.all()
     my_products = Product.objects.filter(sellerID=request.user.id)  # .values_list('id')
     open_bids = Bid.objects.filter(ProductID__in=my_products, StatusID=Status.objects.get(id=1))
+    my_bids = Bid.objects.filter(UserID=request.user)
 
     context = {
         'cur_user': request.user,
         'profile_info': Profile.objects.filter(user=request.user).first(),
         'user_products': my_products,
         'open_bids': open_bids,
+        'my_bids': my_bids,
                }
     return render(request, 'user/profile.html', context)
 
@@ -102,3 +104,17 @@ def seller_profile(request, id):
         'seller_products': Product.objects.filter(sellerID=seller),
                }
     return render(request, 'user/seller_profile.html', context)
+
+@login_required
+def check_out(request, id):
+    profile = Profile.objects.filter(user=request.user).first()
+    if request.method == 'POST':
+        form = ProfileForm(instance=profile, data=request.POST)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.user = request.user
+            profile.save()
+            return redirect('profile')
+    return render(request, 'user/edit_profile.html', {
+        'form': ProfileForm(instance=profile)
+    })

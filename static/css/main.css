@@ -71,6 +71,7 @@
     box-sizing: border-box;
 }
 #filter-by {
+    font-size: 0.8rem;
     float: right;
 }
 /* HERO BANNER STYLES */

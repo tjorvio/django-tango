@@ -25,10 +25,18 @@
                 {% endfor %}
             </div>
             <div class="col">
-                <h4>BIDS</h4>
-                {% for bid in open_bids %}
-                    {% include 'user/open_bid.html' with bid=bid %}
-                {% endfor %}
+                {% if open_bids %}
+                    <h4>BIDS</h4>
+                    {% for bid in open_bids %}
+                        {% include 'user/open_bid.html' with bid=bid %}
+                    {% endfor %}
+                {% endif %}
+                {% if my_bids %}
+                    <h4>MY BIDS</h4>
+                    {% for bid in my_bids %}
+                        {% include 'user/my_bid.html' with bid=bid %}
+                    {% endfor %}
+                {% endif %}
             </div>
         </div>
     </div>
