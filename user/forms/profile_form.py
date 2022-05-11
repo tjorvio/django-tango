@@ -12,5 +12,6 @@ class ProfileForm(ModelForm):
             'Zip': widgets.NumberInput(attrs={'class': 'form-control'}),
             'City': widgets.TextInput(attrs={'class': 'form-control'}),
             'Picture': widgets.TextInput(attrs={'class': 'form-control'}),
+            'Bio': widgets.TextInput(attrs={'class': 'form-control'}),
             'CountryID': widgets.Select(attrs={'class': 'form-control'})
         }
