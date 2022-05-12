@@ -1,0 +1,14 @@
+<div class="profile_product">
+    <img class="profile-product-img" src="{{ product.picture_set.first.picturedata.url }}" alt="Product picture">
+    <a href="/products/{{ product.id }}">
+        <h4>{{ product.name }}</h4>
+        <p><strong>€ {{ product.price }}</strong></p>
+    </a>
+   <!-- <form class="form from-horizontal" action="{% url 'edit_product' product.id  %}" method="get">
+        {% csrf_token %}
+        <input type="submit" value="Edit Product"  />
+    </form>-->
+    <span class="profile-edit-product"><a href="{% url 'edit_product' product.id %}">Edit product</a></span>
+</div>
+
+

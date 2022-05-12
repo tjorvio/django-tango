@@ -1,12 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
     <h2 class="product">Welcome to FireSale - products</h2>
-
-    {% for product in products %}
-        {% include 'product/single_product.html' with product=product %}
-    {% endfor %}
-    <li class="filters"><a class="filter_by" href="?sort=name">Sort:-- by name</a></li>
-    <li class="filters"><a class="filter_by" href="?sort=l2h">Sort:--low to high price</a></li>
-    <li class="filters"><a class="filter_by" href="?sort=h2l">Sort:-- high to low price</a></li>
+    {%  include 'product/sort_by.html' %}
+    <div class="product-container">
+        {% for product in products %}
+            {% include 'product/single_product.html' with product=product %}
+        {% endfor %}
+    </div>
 
 {% endblock %}

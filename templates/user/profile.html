@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{%  block content %}
+    <div class="spacer"></div>
+    <div class="container">
+        <div class="row align-items-start">
+            <div class="col">
+                <div class="profile-img-container">
+                    <img class="profile-img" src="{{ profile_info.Picture }}" alt="Profile-image"/>
+                </div>
+                <span class="user-name text-uppercase">{{ cur_user.username }}</span><br>
+                <a class="edit-user-link" href="{% url 'edit_profile' %}">Edit Profile</a>
+            </div>
+            <div class="col">
+                <span class="bio">{{ profile_info.Bio }}</span><br>
+            </div>
+            <div class="col">
+                <form action="{% url 'create_product' %}" method="get">
+                    <input type="submit" value="+ ADD PRODUCT" />
+                </form>
+            </div>
+        </div>
+        <div class="spacer"></div>
+        <div class="row align-items-start">
+            <div class="col">
+                <h4>MY PRODUCTS</h4>
+                {% for product in user_products %}
+                    {% include 'product/profile_product.html' with product=product %}
+                {% endfor %}
+            </div>
+            <div class="col">
+                {% if open_bids %}
+                    <h4>BIDS</h4>
+                    {% for bid in open_bids %}
+                        {% include 'user/open_bid.html' with bid=bid %}
+                    {% endfor %}
+                {% endif %}
+                {% if my_bids %}
+                    <h4>MY BIDS</h4>
+                    {% for bid in my_bids %}
+                        {% include 'user/my_bid.html' with bid=bid %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

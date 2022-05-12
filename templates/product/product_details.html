@@ -1,15 +1,38 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
     <h1>{{ product.name }}</h1>
     <p>{{ product.description }}</p>
-    <p>${{ product.price }}</p>
+    {% if product.SoldOrNot == 1 %}
+        <p><strong>Product SOLD</strong></p>
+    {% else %}
+        <p>${{ product.price }}</p>
+        <p>Highest bid: {{ highest_bid.BidAmount }}</p>
+    {% endif %}
+
+        {% include 'user/product_seller.html' with seller_profile=seller %}
 
     {% for product_picture in product.picture_set.all %}
-        <img class="product-picture" src="{{ product_picture.picture }}" alt="Picture of product"/>
+        <img class="product-picture" src="{{ product_picture.picturedata.url }}" alt="Picture of product"/>
     {% endfor %}
-    <form method="GET" action="{% url 'place_bid' %}">
-     <button type="submit" class="btn btn-primary"
-             value="{{ product.id }}" name="product_id">Place Bid
-     </button>
+    {% if user.is_authenticated %}
+        {% if product.SoldOrNot == 0 %}
+            <form method="GET" action="{% url 'place_bid' %}">
+             <button type="submit" class="btn btn-primary"
+                     value="{{ product.id }}" name="product_id">Place Bid
+             </button>
+            </form>
+        {% endif %}
 
+    {% else %}
+        <p><a href="{% url 'login' %}">Login</a> to place a bid</p>
+    {% endif %}
+    <p></p>
+    <h4><strong>Similar items </strong></h4>
+    <div class="product-container">
+        {% for product in similar_products %}
+            {% include 'product/single_product.html' with categoryID=product.categoryID %}
+        {% endfor %}
+    </div>
 {% endblock %}
+

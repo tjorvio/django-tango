@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col">
+        <span>Product: <strong>{{ bid.ProductID.name }}</strong></span><br/>
+        <span>Bid amount: <strong>€{{ bid.BidAmount }}</strong></span><br/>
+        <span>Seller: <strong>{{ bid.ProductID.sellerID }}</strong></span>
+
+    </div>
+    <div class="col">
+
+        {% if bid.StatusID.id == 2 %}
+            <span class="text-success fw-bold">Status: {{ bid.StatusID }}</span><br/>
+            <span>Check-out!</span>
+        {% elif bid.StatusID.id == 3 %}
+            <span class="text-danger fw-bold">Status: {{ bid.StatusID }}</span><br/>
+        {% else %}
+            <span>Status: {{ bid.StatusID }}</span><br/>
+        {% endif %}
+    </div>
+    <hr/>
+</div>
