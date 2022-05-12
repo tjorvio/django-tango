@@ -11,7 +11,7 @@ class SignUpForm(UserCreationForm):
             'name': 'username',
             'id': 'username',
             'type': 'text',
-            'class': 'form-input',
+            'class': 'form-control',
             'placeholder': 'John/Jane Doe'
         })
         self.fields["email"].widget.attrs.update({
@@ -19,7 +19,7 @@ class SignUpForm(UserCreationForm):
             'name': 'email',
             'id': 'email',
             'type': 'email',
-            'class': 'form-input',
+            'class': 'form-control',
             'placeholder': 'johnorjanedoe@email.com'
         })
         self.fields["first_name"].widget.attrs.update({
@@ -27,7 +27,7 @@ class SignUpForm(UserCreationForm):
             'name': 'first_name',
             'id': 'first_name',
             'type': 'first_name',
-            'class': 'form-input',
+            'class': 'form-control',
             'placeholder': 'John / Jane'
         })
         self.fields["last_name"].widget.attrs.update({
@@ -35,7 +35,7 @@ class SignUpForm(UserCreationForm):
             'name': 'last_name',
             'id': 'last_name',
             'type': 'last_name',
-            'class': 'form-input',
+            'class': 'form-control',
             'placeholder': 'Doe'
         })
         self.fields["password1"].widget.attrs.update({
@@ -43,7 +43,7 @@ class SignUpForm(UserCreationForm):
             'name': 'password1',
             'id': 'password1',
             'type': 'password',
-            'class': 'form-input',
+            'class': 'form-control',
             'placeholder': 'Your Password',
             'minlength': '8'
         })
@@ -52,7 +52,7 @@ class SignUpForm(UserCreationForm):
             'name': 'password2',
             'id': 'password2',
             'type': 'password',
-            'class': 'form-input',
+            'class': 'form-control',
             'placeholder': 'Your Password, again',
             'minlength': '8'
         })
