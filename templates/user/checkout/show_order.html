@@ -11,7 +11,7 @@
     <p>{{ forms.1.bid }}</p>
     <p>Amount: €{{ bid.BidAmount }}</p>
 
-    <form class="form form-horizontal" method="post" action="{% url 'profile' %}">
+    <form class="form form-horizontal" method="post" action="{% url 'mark_bid_closed' %}">
         {% csrf_token %}
         <button type="submit" class="btn btn-primary" value="">Confirm</button>
     </form>

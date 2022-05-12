@@ -202,7 +202,10 @@ def begin_check_out(request, id):
     print(request.session['bid'])
     return redirect('check_out')
 
-
+def mark_bid_closed(request):
+    cur_bid = Bid.objects.get(id=request.session['bid'])
+    cur_bid.StatusID = 4
+    return redirect('profile')
 
 # @login_required
 # def check_out1(request, id):
