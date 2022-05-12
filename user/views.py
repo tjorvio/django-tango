@@ -36,26 +36,18 @@ def place_bid(request):
     })
 
 
-# def register(request):
-#    if request.method == 'POST':
-#        form = UserCreationForm(data=request.POST)
-#        if form.is_valid():
-#            form.save()
-#            return redirect('login')
-#    return render(request, 'user/register.html', {
-#        'form': UserCreationForm()
-#    })
-
 def register(request):
-    form = SignUpForm(request.POST)
-    if form.is_valid():
-        form.save()
-        return redirect('login')
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('users/login.html')
+    else:
+        form = SignUpForm()
 
-    context = {
-        "form": form
-    }
-    return render(request, "user/register.html", context)
+    return render(request, 'user/register.html', {
+        'form': form
+    })
 
 
 @login_required
@@ -115,5 +107,5 @@ def seller_profile(request, id):
     context = {
         'profile_info': Profile.objects.get(id=id),
         'seller_products': Product.objects.filter(sellerID=seller),
-               }
+    }
     return render(request, 'user/seller_profile.html', context)
