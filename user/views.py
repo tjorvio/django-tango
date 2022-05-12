@@ -84,12 +84,10 @@ def profile(request):
         'profile_info': Profile.objects.filter(user=request.user).first(),
         'user_products': my_products,
         'open_bids': open_bids,
-<<<<<<< HEAD
+
         'my_bids': my_bids,
-               }
-=======
     }
->>>>>>> aslaugtestbranch2
+
     return render(request, 'user/profile.html', context)
 
 
@@ -172,31 +170,31 @@ class OrderWizard(NamedUrlSessionWizardView):
         # return redirect('home')
 
 
-def confirm_order(request):
-    bid_id = request.session['bid']
-    # forms = request.session['forms']
-    # forms = [{'full_name': 'Ray Tango', 'street_name': 'LA street 45', 'city': 'Los Angles', 'zip': 12344, 'CountryID': 2}, {'cardholder': 'Ray Tango', 'card_number': '0123456789123456', 'expire_month': 2, 'expire_year': 24, 'card_cvc': 433}]
-
-    order_bid = Bid.objects.get(id=bid_id)
-    print(order_bid)
-    forms[1]['bid'] = order_bid
-    address = CheckOutAddressForm(data=forms[0])
-    # print(address)
-    payment = CheckOutCCForm(data=forms[1])
-    buyer = request.user
-    # print(payment)
-    print(buyer)
-    if request.method == 'POST':
-        address.save()
-        payment.save(commit=False)
-        payment.bid = bid_id
-        print(payment)
-        payment.save()
-        order = CheckOutConfirmForm(initial={'billing_address': address, 'payment_info': payment, 'buyer': buyer})
-        if order.is_valid():
-            print(order)
-            order.save()
-        return redirect('profile')
+# def confirm_order(request):
+#     bid_id = request.session['bid']
+#     # forms = request.session['forms']
+#     # forms = [{'full_name': 'Ray Tango', 'street_name': 'LA street 45', 'city': 'Los Angles', 'zip': 12344, 'CountryID': 2}, {'cardholder': 'Ray Tango', 'card_number': '0123456789123456', 'expire_month': 2, 'expire_year': 24, 'card_cvc': 433}]
+#
+#     order_bid = Bid.objects.get(id=bid_id)
+#     print(order_bid)
+#     forms[1]['bid'] = order_bid
+#     address = CheckOutAddressForm(data=forms[0])
+#     # print(address)
+#     payment = CheckOutCCForm(data=forms[1])
+#     buyer = request.user
+#     # print(payment)
+#     print(buyer)
+#     if request.method == 'POST':
+#         address.save()
+#         payment.save(commit=False)
+#         payment.bid = bid_id
+#         print(payment)
+#         payment.save()
+#         order = CheckOutConfirmForm(initial={'billing_address': address, 'payment_info': payment, 'buyer': buyer})
+#         if order.is_valid():
+#             print(order)
+#             order.save()
+#         return redirect('profile')
 
 
 def begin_check_out(request, id):
