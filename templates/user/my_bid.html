@@ -9,7 +9,10 @@
 
         {% if bid.StatusID.id == 2 %}
             <span class="text-success fw-bold">Status: {{ bid.StatusID }}</span><br/>
-            <span>Check-out!</span>
+            <form action="{% url 'begin_check_out' bid.id %}" method="get">
+                <input type="submit" value="{{ bid.id }}"/>
+            </form>
+            <a href="{% url 'begin_check_out' bid.id %}">Check-out!</a>
         {% elif bid.StatusID.id == 3 %}
             <span class="text-danger fw-bold">Status: {{ bid.StatusID }}</span><br/>
         {% else %}

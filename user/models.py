@@ -38,6 +38,9 @@ class Profile(models.Model):
     Bio = models.CharField(max_length=255, default=None, null=True)
     CountryID = models.ForeignKey(Country, on_delete=models.SET_NULL, null=True)
 
+    def __str__(self):
+        return self.user.username
+
 
 class Bid(models.Model):
     BidAmount = models.FloatField(default=0)
@@ -49,13 +52,17 @@ class Bid(models.Model):
     def __str__(self):
         return f"{self.ProductID.name} + Bid: €{self.BidAmount}"
 
-class Order(models.Model):
+
+class BillingAddress(models.Model):
     # Contact info ---
     full_name = models.CharField(max_length=255)
     street_name = models.CharField(max_length=255)
     city = models.CharField(max_length=255)
     zip = models.IntegerField()
     CountryID = models.ForeignKey(Country, on_delete=models.SET_NULL, null=True)
+
+
+class PaymentInfo(models.Model):
     # Payment info --
     cardholder = models.CharField(max_length=255)
     card_number = models.CharField(max_length=16)
@@ -63,7 +70,13 @@ class Order(models.Model):
     expire_year = models.IntegerField(validators=[MinValueValidator(00), MaxValueValidator(99)])
     card_cvc = models.IntegerField(validators=[MinValueValidator(000), MaxValueValidator(999)])
     bid = models.ForeignKey(Bid, on_delete=models.CASCADE)
-    buyer = models.ForeignKey(Profile, on_delete=models.CASCADE)
+
+
+class Order(models.Model):
+    billing_address = models.ForeignKey(BillingAddress, on_delete=models.SET_NULL, null=True)
+    payment_info = models.ForeignKey(PaymentInfo, on_delete=models.SET_NULL, null=True)
+    buyer = models.ForeignKey(Profile, on_delete=models.SET_NULL, null=True)
+
 
 class Rating(models.Model):
     stars = models.FloatField(default=0)

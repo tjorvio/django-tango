@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{%  block content %}
+    <h1>CHECKOUT - {{ wizard.steps.step1 }}/{{ wizard.steps.count }}</h1>
+    <h4>CREDIT CARD!</h4>
+    <form class="form form-horizontal" method="post">
+        {% csrf_token %}
+    <h1>{{ all_data.full_name }}</h1>
+        {{ wizard.management_form }}
+        {% if wizard.form.forms %}
+            {{ wizard.form.management_form }}
+            {% for form in wizard.form.forms %}
+                {{ form }}
+            {% endfor %}
+        {% else %}
+            {{ wizard.form }}
+        {% endif %}
+    {% if wizard.steps.prev %}
+        <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.first }}">first step</button>
+        <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">prev step</button>
+    {% endif %}
+        <input type="submit" class="btn btn-primary" value="Next" />
+    </form>
+
+
+{% endblock %}

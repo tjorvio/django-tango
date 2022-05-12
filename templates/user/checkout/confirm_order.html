@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{%  block content %}
+    <h1>CHECKOUT - 3/3</h1>
+    <h4>REVIEW & CONFIRM!</h4>
+    <p>{{ forms.0.full_name }}</p>
+    <p>{{ forms.0.street_name }}</p>
+    <p>{{ forms.0.city }}</p>
+    <p>{{ forms.0.zip }}</p>
+    <p>{{ forms.0.CountryID }}</p>
+    <p>{{ forms.1.cardholder }}</p>
+    <p>{{ forms.1.bid }}</p>
+    <p>Amount: €{{ forms.1.bid.BidAmount }}</p>
+
+    <form class="form form-horizontal" method="post" action="{% url 'confirm_order' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary" value="">Confirm</button>
+    </form>
+{#    <h1>{{ all_data.full_name }}</h1>#}
+{#        {{ wizard.management_form }}#}
+{#        {% if wizard.form.forms %}#}
+{#            {{ wizard.form.management_form }}#}
+{#            {% for form in wizard.form.forms %}#}
+{#                {{ form }}#}
+{#            {% endfor %}#}
+{#        {% else %}#}
+{#            {{ wizard.form }}#}
+{#        {% endif %}#}
+{#    {% if wizard.steps.prev %}#}
+{#        <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.first }}">first step</button>#}
+{#        <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">prev step</button>#}
+{#    {% endif %}#}
+{#        <input type="submit" class="btn btn-primary" value="Next" />#}
+
+{% endblock %}
