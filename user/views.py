@@ -1,5 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
+from django.db.models import Q
+
 from FireSale.forms.register_form import SignUpForm
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse, HttpResponseRedirect
@@ -77,8 +79,7 @@ def profile(request):
     # all_bids = Bid.objects.all()
     my_products = Product.objects.filter(sellerID=request.user.id)  # .values_list('id')
     open_bids = Bid.objects.filter(ProductID__in=my_products, StatusID=Status.objects.get(id=1))
-    my_bids = Bid.objects.filter(UserID=request.user)
-
+    my_bids = Bid.objects.filter(UserID=request.user).filter(~Q(StatusID=Status.objects.get(id=4)))
     context = {
         'cur_user': request.user,
         'profile_info': Profile.objects.filter(user=request.user).first(),
@@ -144,6 +145,14 @@ TEMPLATES = {
 
 class OrderWizard(NamedUrlSessionWizardView):
 
+    def get_form_instance(self, step):
+        if step == 'cc':
+            bid_id = Bid.objects.get(id=self.request.session['bid'])
+            pay_instance = PaymentInfo(bid=bid_id)
+            return pay_instance
+        else:
+            return None
+
     def get_template_names(self):
         return [TEMPLATES[self.steps.current]]
 
@@ -164,7 +173,9 @@ class OrderWizard(NamedUrlSessionWizardView):
         print(pay)
         # order = CheckOutConfirmForm(initial={'billing_address': add, 'payment_info': pay, 'buyer': buyer})
         Order.objects.update_or_create(billing_address=add, payment_info=pay, buyer=buyer_pro)
-
+        close_bid = Bid.objects.get(id=bid_id)
+        close_bid.StatusID = Status.objects.get(id=4)
+        close_bid.save()
         # print("Her er order")
         # print(order)
         # if order.is_valid():
@@ -205,12 +216,12 @@ class OrderWizard(NamedUrlSessionWizardView):
 
 def begin_check_out(request, id):
     request.session['bid'] = id
-    print(request.session['bid'])
+    # print(request.session['bid'])
     return redirect('check_out')
 
 def mark_bid_closed(request):
     cur_bid = Bid.objects.get(id=request.session['bid'])
-    cur_bid.StatusID = 4
+    cur_bid.StatusID = Status.objects.get(id=4)
     return redirect('profile')
 
 # @login_required
