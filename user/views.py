@@ -63,7 +63,7 @@ def register(request):
 def edit_profile(request):
     profile = Profile.objects.filter(user=request.user).first()
     if request.method == 'POST':
-        form = ProfileForm(instance=profile, data=request.POST, files=request.FILES )
+        form = ProfileForm(instance=profile, data=request.POST, files=request.FILES)
         if form.is_valid():
             profile = form.save(commit=False)
             profile.user = request.user
@@ -85,10 +85,8 @@ def profile(request):
         'profile_info': Profile.objects.filter(user=request.user).first(),
         'user_products': my_products,
         'open_bids': open_bids,
-
         'my_bids': my_bids,
     }
-
     return render(request, 'user/profile.html', context)
 
 
@@ -110,11 +108,11 @@ def decline_bid(request, id):
     bid.save()
     return redirect('profile')
 
+
 def delete_bid(request, id):
     bid = get_object_or_404(Bid, pk=id)
     bid.delete()
     return redirect('profile')
-
 
 
 def seller_profile(request, id):
@@ -129,6 +127,21 @@ def seller_profile(request, id):
     return render(request, 'user/seller_profile.html', context)
 
 
+@login_required
+def check_out(request, id):
+    profile = Profile.objects.filter(user=request.user).first()
+    if request.method == 'POST':
+        form = ProfileForm(instance=profile, data=request.POST)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.user = request.user
+            profile.save()
+            return redirect('profile')
+    return render(request, 'user/edit_profile.html', {
+        'form': ProfileForm(instance=profile)
+    })
+
+
 FORMS = [
     ("address", user.forms.checkout_address_form),
     ("cc", user.forms.checkout_cc_form),
@@ -138,7 +151,7 @@ FORMS = [
 TEMPLATES = {
     'address': 'user/checkout/billing_address.html',
     'cc': 'user/checkout/creditcard.html',
-    #'confirmation': 'user/checkout/confirm_order.html',
+    # 'confirmation': 'user/checkout/confirm_order.html',
 
 }
 
@@ -218,6 +231,7 @@ def begin_check_out(request, id):
     request.session['bid'] = id
     # print(request.session['bid'])
     return redirect('check_out')
+
 
 def mark_bid_closed(request):
     cur_bid = Bid.objects.get(id=request.session['bid'])
