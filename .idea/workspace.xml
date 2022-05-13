@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ff170cc6-4488-47cd-8b56-e9dc97507774" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/7faaef1b-4820-414f-8eb8-035f60ed7307.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/7faaef1b-4820-414f-8eb8-035f60ed7307/storage_v2/_src_/database/firesale-db.zvyh9g.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/7faaef1b-4820-414f-8eb8-035f60ed7307/storage_v2/_src_/database/firesale-db.zvyh9g/schema/information_schema.FNRwLQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/7faaef1b-4820-414f-8eb8-035f60ed7307/storage_v2/_src_/database/firesale-db.zvyh9g/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/7faaef1b-4820-414f-8eb8-035f60ed7307/storage_v2/_src_/database/firesale-db.zvyh9g/schema/public.abK9xQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_4_2022_11_25_AM_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_4_2022_11_25_AM__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/product/migrations/0011_alter_product_createdat.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/product/migrations/0012_alter_product_createdat.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/upload_images/43f63801-db54-44b2-86e4-57f90a20fde0.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/upload_images/8ddca775-cec8-4051-a3bb-ab246b6a0358.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/upload_images/a91bb0d5-68c4-4a71-809e-7c29f0af0ff3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/upload_images/bb0e65b0-ace7-48f3-a0de-b53763ce4e46.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/user/checkout/billing_address.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/user/checkout/confirm_order.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/user/checkout/creditcard.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/user/checkout/show_order.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user/forms/checkout_address_form.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user/forms/checkout_cc_form.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user/forms/checkout_confirm_form.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user/migrations/0007_remove_order_countryid_remove_order_bid_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user/migrations/0008_alter_profile_picture.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Firesale.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Firesale.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/externalDependencies.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FireSale/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/FireSale/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/edit_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/edit_profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/my_bid.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/my_bid.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/product_seller.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/product_seller.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/seller_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/seller_profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/forms/profile_form.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/forms/profile_form.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/views.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="296XS4pjebzHFeFcPX2PFLJyOBo" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="django-tango" type="Python.DjangoServer" factoryName="Django server">
+      <module name="django-tango" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="FireSale.settings" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ff170cc6-4488-47cd-8b56-e9dc97507774" name="Changes" comment="" />
+      <created>1652434514603</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1652434514603</updated>
+      <workItem from="1652434523637" duration="4816000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>

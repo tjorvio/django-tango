@@ -4,11 +4,13 @@
      <div class="spacer"></div>
     <h5>Seller profile</h5>
     <div class="profile-img-container">
-        <img class="profile-img" src="{{ profile_info.Picture }}" alt="Profile-image"/>
+        <img class="profile-img" src="{{ profile_info.Picture.url }}" alt="Profile-image"/>
     </div>
     <span class="user-name text-uppercase">{{ profile_info.user.username }}</span><br>
     <span>Here comes review rating</span>
      <div class="spacer"></div>
+    <span class="bio"><strong>Bio:</strong> {{ profile_info.Bio }}</span>
+    <div class="spacer"></div>
     <h4 class="text-uppercase">{{ profile_info.user.username }} PRODUCTS</h4>
     <div class="product-container">
     {% for product in seller_products %}
