@@ -7,7 +7,7 @@ class CheckOutAddressForm(ModelForm):
     class Meta:
         model = BillingAddress
         exclude = ['id']
-        widget = {
+        widgets = {
             'full_name': widgets.TextInput(attrs={'class': 'form-control'}),
             'street_name': widgets.TextInput(attrs={'class': 'form-control'}),
             'City': widgets.TextInput(attrs={'class': 'form-control'}),

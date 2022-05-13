@@ -2,15 +2,17 @@
 {%  block content %}
     <h1>CHECKOUT - 3/3</h1>
     <h4>REVIEW & CONFIRM!</h4>
-    <p>{{ forms.0.full_name }}</p>
-    <p>{{ forms.0.street_name }}</p>
-    <p>{{ forms.0.city }}</p>
-    <p>{{ forms.0.zip }}</p>
-    <p>{{ forms.0.CountryID }}</p>
-    <p>{{ forms.1.cardholder }}</p>
-    <p>{{ forms.1.bid }}</p>
-    <p>Amount: €{{ bid.BidAmount }}</p>
-
+    <span><strong>Your Name: </strong>{{ forms.0.full_name }}</span><br>
+    <span><strong>Address: </strong></span><br>
+    <span>{{ forms.0.street_name }}</span><br>
+    <span>{{ forms.0.city }}</span><br>
+    <span>{{ forms.0.zip }}</span><br>
+    <span>{{ forms.0.CountryID }}</span><br>
+    <span<strong>Payment Info: </strong> </span><br>
+    <span><strong>Cardholder: </strong>{{ forms.1.cardholder }}</span><br>
+    <span><strong>Product & Amount: </strong></span><br>
+    <span>{{ forms.1.bid }}</span><br>
+    <div class="spacer"></div>
     <form class="form form-horizontal" method="post" action="{% url 'mark_bid_closed' %}">
         {% csrf_token %}
         <button type="submit" class="btn btn-primary" value="">Confirm</button>
