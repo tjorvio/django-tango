@@ -4,13 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="748011b3-9b5f-4c61-87ab-7099ce8ac90a" name="Changes" comment="Product details view img made smaller, text styles added">
+    <list default="true" id="748011b3-9b5f-4c61-87ab-7099ce8ac90a" name="Changes" comment="User auth check change">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/product/create_product.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/product/create_product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/product/edit_product.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/product/edit_product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/checkout/billing_address.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/checkout/billing_address.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/user/checkout/creditcard.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/checkout/creditcard.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/user/checkout/show_order.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/checkout/show_order.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/forms/checkout_address_form.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/forms/checkout_address_form.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/forms/checkout_cc_form.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/forms/checkout_cc_form.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/forms/checkout_confirm_form.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/forms/checkout_confirm_form.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/edit_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/edit_profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/login.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +87,7 @@
       <option name="presentableId" value="Default" />
       <updated>1652434514603</updated>
       <workItem from="1652434523637" duration="4946000" />
-      <workItem from="1652459149581" duration="2554000" />
+      <workItem from="1652459149581" duration="8048000" />
     </task>
     <task id="LOCAL-00001" summary="Profile img in navbar add for all views">
       <created>1652457073170</created>
@@ -101,7 +103,28 @@
       <option name="project" value="LOCAL" />
       <updated>1652458312930</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Layout on checkout forms fixed">
+      <created>1652462141313</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1652462141313</updated>
+    </task>
+    <task id="LOCAL-00004" summary="typeo fixed">
+      <created>1652463511967</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1652463511967</updated>
+    </task>
+    <task id="LOCAL-00005" summary="User auth check change">
+      <created>1652465960137</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1652465960137</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -125,6 +148,9 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Profile img in navbar add for all views" />
     <MESSAGE value="Product details view img made smaller, text styles added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Product details view img made smaller, text styles added" />
+    <MESSAGE value="Layout on checkout forms fixed" />
+    <MESSAGE value="typeo fixed" />
+    <MESSAGE value="User auth check change" />
+    <option name="LAST_COMMIT_MESSAGE" value="User auth check change" />
   </component>
 </project>
