@@ -56,9 +56,16 @@ def get_product_by_id(request, id):
 
 
 def category_view(request, id):
-    context = {'products': Product.objects.filter(categoryID=id),
-               'categories': Category.objects.all().order_by('name')
+    sort_by = request.GET.get("sort", "l2h")
+    context = {'categories': Category.objects.all().order_by('name')
                }
+    if sort_by == 'l2h':
+        context['products'] = Product.objects.filter(categoryID=id).order_by('price')
+    elif sort_by == 'h2l':
+        context['products'] = Product.objects.filter(categoryID=id).order_by('-price')
+    else:
+        context['products'] = Product.objects.filter(categoryID=id).order_by('name')
+
     return render(request, 'product/category.html', context)
 
 @login_required
