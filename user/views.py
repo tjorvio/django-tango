@@ -42,7 +42,7 @@ def place_bid(request):
     context = {
         'form': form,
     }
-    if request.user:
+    if request.user.is_authenticated:
         context['profile_info'] = Profile.objects.filter(user=request.user).first()
     return render(request, 'user/place_bid.html', context)
 
@@ -74,7 +74,7 @@ def edit_profile(request):
     context = {
         'form': ProfileForm(instance=profile)
     }
-    if request.user:
+    if request.user.is_authenticated:
         context['profile_info'] = Profile.objects.filter(user=request.user).first()
     return render(request, 'user/edit_profile.html', context)
 
@@ -129,7 +129,7 @@ def seller_profile(request, id):
         'seller_info': Profile.objects.get(id=id),
         'seller_products': Product.objects.filter(sellerID=seller),
     }
-    if request.user:
+    if request.user.is_authenticated:
         context['profile_info'] = Profile.objects.filter(user=request.user).first()
     return render(request, 'user/seller_profile.html', context)
 
@@ -204,7 +204,7 @@ class OrderWizard(NamedUrlSessionWizardView):
         context = {
             'forms': forms,
         }
-        if self.request.user:
+        if self.request.user.is_authenticated:
             context['profile_info'] = Profile.objects.filter(user=self.request.user).first()
         return render(self.request, 'user/checkout/show_order.html', context)
         # return redirect('home')

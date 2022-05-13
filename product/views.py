@@ -28,7 +28,7 @@ def index(request):
         context = {'products': Product.objects.all().order_by('name'),
                    'categories': Category.objects.all().order_by('name')
                    }
-    if request.user:
+    if request.user.is_authenticated:
         context['profile_info'] = Profile.objects.filter(user=request.user).first()
     return render(request, 'product/index.html', context)
   
@@ -37,7 +37,7 @@ def home_view(request):
     context = {'categories': Category.objects.all().order_by('name'),
                'products': Product.objects.all().order_by('-CreatedAt')[:4]  # here we can control how many items we get
                }
-    if request.user:
+    if request.user.is_authenticated:
         context['profile_info'] = Profile.objects.filter(user=request.user).first()
     return render(request, 'home.html', context)
 
@@ -56,7 +56,7 @@ def get_product_by_id(request, id):
 
                'similar_products': same_category
                }
-    if request.user:
+    if request.user.is_authenticated:
         context['profile_info'] = Profile.objects.filter(user=request.user).first()
     return render(request, 'product/product_details.html', context)
 
@@ -72,7 +72,7 @@ def category_view(request, id):
     else:
         context['products'] = Product.objects.filter(categoryID=id).order_by('name')
 
-    if request.user:
+    if request.user.is_authenticated:
         context['profile_info'] = Profile.objects.filter(user=request.user).first()
     return render(request, 'product/category.html', context)
 
@@ -94,7 +94,7 @@ def create_product(request):
         'form': form,
         'form2': form2
     }
-    if request.user:
+    if request.user.is_authenticated:
         context['profile_info'] = Profile.objects.filter(user=request.user).first()
     return render(request, 'product/create_product.html', context)
 
@@ -117,7 +117,7 @@ def edit_product(request, id):
         'form': form,
         'id': id
     }
-    if request.user:
+    if request.user.is_authenticated:
         context['profile_info'] = Profile.objects.filter(user=request.user).first()
     return render(request, 'product/edit_product.html', context)
 
@@ -133,6 +133,6 @@ def search_results(request):
         context = {'products': Product.objects.filter(name__icontains=search_term),
                    'categories': Category.objects.all().order_by('name')
                    }
-        if request.user:
+        if request.user.is_authenticated:
             context['profile_info'] = Profile.objects.filter(user=request.user).first()
         return render(request, 'product/search_results.html', context)
