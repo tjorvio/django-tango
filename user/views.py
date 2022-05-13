@@ -77,12 +77,8 @@ def profile(request):
         'profile_info': Profile.objects.filter(user=request.user).first(),
         'user_products': my_products,
         'open_bids': open_bids,
-<<<<<<< HEAD
         'my_bids': my_bids,
-               }
-=======
     }
->>>>>>> aslaugtestbranch2
     return render(request, 'user/profile.html', context)
 
 
@@ -115,6 +111,7 @@ def seller_profile(request, id):
         'seller_products': Product.objects.filter(sellerID=seller),
     }
     return render(request, 'user/seller_profile.html', context)
+
 
 @login_required
 def check_out(request, id):
