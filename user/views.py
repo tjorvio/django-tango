@@ -52,7 +52,7 @@ def register(request):
         form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('users/login.html')
+            return redirect('login')
     else:
         form = SignUpForm()
 

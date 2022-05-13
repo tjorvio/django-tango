@@ -13,4 +13,3 @@ class PictureForm(ModelForm):
         widgets = {
 
         }
-
