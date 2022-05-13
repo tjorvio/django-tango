@@ -3,7 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from product.models import Product
+from product.models import Product, uuid_imagepath
 
 
 # Create your models here.
@@ -34,7 +34,7 @@ class Profile(models.Model):
     StreetName = models.CharField(max_length=255)
     Zip = models.FloatField(default=0)
     City = models.CharField(max_length=255)
-    Picture = models.CharField(max_length=255)
+    Picture = models.ImageField(upload_to=uuid_imagepath, default='static/images/noprofile.png')
     Bio = models.CharField(max_length=255, default=None, null=True)
     CountryID = models.ForeignKey(Country, on_delete=models.SET_NULL, null=True)
 
