@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {%  block content %}
+    <div class="shadow p-4 mb-5 bg-body rounded">
     <h1>CHECKOUT - {{ wizard.steps.step1 }}/{{ wizard.steps.count }}</h1>
     <h4>NAME & ADDRESS</h4>
     {{ request.id }}
@@ -20,4 +21,5 @@
     {% endif %}
         <button type="submit" class="btn btn-primary" value="{{ request.id }}" >Continue</button>
     </form>
+    </div>
 {% endblock %}
