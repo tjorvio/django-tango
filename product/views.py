@@ -28,6 +28,8 @@ def index(request):
         context = {'products': Product.objects.all().order_by('name'),
                    'categories': Category.objects.all().order_by('name')
                    }
+    if request.user:
+        context['profile_info'] = Profile.objects.filter(user=request.user).first()
     return render(request, 'product/index.html', context)
   
 
@@ -35,6 +37,8 @@ def home_view(request):
     context = {'categories': Category.objects.all().order_by('name'),
                'products': Product.objects.all().order_by('-CreatedAt')[:4]  # here we can control how many items we get
                }
+    if request.user:
+        context['profile_info'] = Profile.objects.filter(user=request.user).first()
     return render(request, 'home.html', context)
 
 
@@ -52,6 +56,8 @@ def get_product_by_id(request, id):
 
                'similar_products': same_category
                }
+    if request.user:
+        context['profile_info'] = Profile.objects.filter(user=request.user).first()
     return render(request, 'product/product_details.html', context)
 
 
@@ -59,6 +65,8 @@ def category_view(request, id):
     context = {'products': Product.objects.filter(categoryID=id),
                'categories': Category.objects.all().order_by('name')
                }
+    if request.user:
+        context['profile_info'] = Profile.objects.filter(user=request.user).first()
     return render(request, 'product/category.html', context)
 
 @login_required
@@ -75,11 +83,13 @@ def create_product(request):
         cur_user = request.user
         form = ProductCreateForm(initial={'sellerID': cur_user})
         form2 = PictureForm()
-
-    return render(request, 'product/create_product.html', {
+    context = {
         'form': form,
         'form2': form2
-    })
+    }
+    if request.user:
+        context['profile_info'] = Profile.objects.filter(user=request.user).first()
+    return render(request, 'product/create_product.html', context)
 
 
 @login_required
@@ -96,11 +106,13 @@ def edit_product(request, id):
     else:
         # cur_user = request.user
         form = ProductEditForm(instance=product)
-
-    return render(request, 'product/edit_product.html', {
+    context = {
         'form': form,
         'id': id
-    })
+    }
+    if request.user:
+        context['profile_info'] = Profile.objects.filter(user=request.user).first()
+    return render(request, 'product/edit_product.html', context)
 
 @login_required
 def delete_product(request, id):
@@ -114,4 +126,6 @@ def search_results(request):
         context = {'products': Product.objects.filter(name__icontains=search_term),
                    'categories': Category.objects.all().order_by('name')
                    }
+        if request.user:
+            context['profile_info'] = Profile.objects.filter(user=request.user).first()
         return render(request, 'product/search_results.html', context)
