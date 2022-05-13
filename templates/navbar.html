@@ -15,7 +15,7 @@
           <a class="nav-link" aria-current="page" href="{% url 'product-index' %}">All Products</a>
         </li>
           {% if user.is_authenticated %}
-              <li><a class="nav-link" href="{% url 'profile' %}"><img src="{{ profile_info.Picture.url }}" alt="profile picture" height="30px">Profile</a></li>
+              <li><a class="nav-link" href="{% url 'profile' %}"><img class="profile-img" src="{{ profile_info.Picture.url }}" alt="profile picture" height="30px">Profile</a></li>
               <li><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
           {% else %}
               <li><a class="nav-link" href="{% url 'register' %}">Register</a></li>
