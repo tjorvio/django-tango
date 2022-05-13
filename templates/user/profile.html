@@ -27,17 +27,22 @@
                 {% endfor %}
             </div>
             <div class="col">
+                <h4>BIDS IN MY PRODUCTS</h4>
                 {% if open_bids %}
-                    <h4>BIDS</h4>
                     {% for bid in open_bids %}
                         {% include 'user/open_bid.html' with bid=bid %}
                     {% endfor %}
+                {% else %}
+                    <span>There are no bids in your products</span>
+                <hr/>
                 {% endif %}
+                <h4>MY BIDS</h4>
                 {% if my_bids %}
-                    <h4>MY BIDS</h4>
                     {% for bid in my_bids %}
                         {% include 'user/my_bid.html' with bid=bid %}
                     {% endfor %}
+                {% else %}
+                    <span>You have not bid in any products.</span>
                 {% endif %}
             </div>
         </div>
