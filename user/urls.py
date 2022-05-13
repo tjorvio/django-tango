@@ -32,4 +32,5 @@ urlpatterns = [
     re_path(r'^checkout/(?P<step>.+)/$', order_wizard, name='order_step'),
     path('checkout/', order_wizard, name='check_out'),
     path('checkout/closed', views.mark_bid_closed, name='mark_bid_closed'),
+    path('delete_bid/<int:id>', views.delete_bid, name='delete_bid'),
 ]

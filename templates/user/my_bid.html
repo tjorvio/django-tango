@@ -15,6 +15,7 @@
             <a href="{% url 'begin_check_out' bid.id %}">Check-out!</a>
         {% elif bid.StatusID.id == 3 %}
             <span class="text-danger fw-bold">Status: {{ bid.StatusID }}</span><br/>
+            <a href="{% url 'delete_bid' bid.id %}">Delete bid</a>
         {% else %}
             <span>Status: {{ bid.StatusID }}</span><br/>
         {% endif %}

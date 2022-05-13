@@ -109,6 +109,12 @@ def decline_bid(request, id):
     bid.save()
     return redirect('profile')
 
+def delete_bid(request, id):
+    bid = get_object_or_404(Bid, pk=id)
+    bid.delete()
+    return redirect('profile')
+
+
 
 def seller_profile(request, id):
     # Here we are missing review data and rating

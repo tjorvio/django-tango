@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="firesale-db@35.228.148.178" uuid="76f77dda-4028-400f-b96d-22c754aa2dbd">
-      <driver-ref>postgresql</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://35.228.148.178:5432/firesale-db</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
-    <data-source source="LOCAL" name="Django default" uuid="8df25f83-8c02-4356-86c5-2eca1db6a767">
+    <data-source source="LOCAL" name="Django default" uuid="7faaef1b-4820-414f-8eb8-035f60ed7307">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>
