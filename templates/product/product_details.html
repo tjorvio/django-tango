@@ -6,15 +6,20 @@
     {% if product.SoldOrNot == 1 %}
         <p><strong>Product SOLD</strong></p>
     {% else %}
-        <p>${{ product.price }}</p>
-        <p>Highest bid: {{ highest_bid.BidAmount }}</p>
+    <h5><strong>Product: €{{ product.price }}</strong></h5>
+        {% if highest_bid.BidAmount %}
+            <span class="text-info"><strong>Highest bid: €{{ highest_bid.BidAmount }}</strong></span>
+        {% endif %}
     {% endif %}
 
-        {% include 'user/product_seller.html' with seller_profile=seller %}
-
+    {% include 'user/product_seller.html' with seller_profile=seller %}
+    <div class="spacer"></div>
+    <div class="product-details-img-div">
     {% for product_picture in product.picture_set.all %}
         <img class="product-picture" src="{{ product_picture.picturedata.url }}" alt="Picture of product"/>
     {% endfor %}
+    </div>
+    <div class="spacer"></div>
     {% if user.is_authenticated %}
         {% if product.SoldOrNot == 0 %}
             <form method="GET" action="{% url 'place_bid' %}">
