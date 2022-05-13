@@ -6,10 +6,9 @@ from product.models import Product
 
 # Forms.
 class ProductEditForm(ModelForm):
-
     class Meta:
         model = Product
-        exclude = ['id', 'SoldOrNot', 'CreatedAt','sellerID']
+        exclude = ['id', 'SoldOrNot', 'CreatedAt', 'sellerID']
         widgets = {
             'name': widgets.TextInput(attrs={'class': 'form-control'}),
             'description': widgets.TextInput(attrs={'class': 'form-control'}),
