@@ -34,7 +34,7 @@ class Profile(models.Model):
     StreetName = models.CharField(max_length=255)
     Zip = models.FloatField(default=0)
     City = models.CharField(max_length=255)
-    Picture = models.ImageField(upload_to=uuid_imagepath, null=True, blank=True)
+    Picture = models.ImageField(upload_to=uuid_imagepath, default='static/images/noprofile.png')
     Bio = models.CharField(max_length=255, default=None, null=True)
     CountryID = models.ForeignKey(Country, on_delete=models.SET_NULL, null=True)
 
